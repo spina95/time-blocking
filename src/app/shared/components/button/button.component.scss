@@ -1,0 +1,25 @@
+@import 'styles/theme.scss';
+
+:host {
+    display: inline-block;
+}
+
+:host.block-button {
+    display: block;
+    width: 100%;
+}
+
+.app-button {
+    // Example of using theme variables if we wanted to override Zorro styles further
+    // But Zorro styles are already customized via theme.less
+
+    // We can add some custom transitions or effects here
+    transition: all 0.3s ease;
+    font-weight: 600;
+    border-radius: var(--app-border-radius-md);
+
+    &:hover {
+        background-color: var(--app-secondary-color) !important;
+        border-color: var(--app-secondary-color) !important;
+    }
+}

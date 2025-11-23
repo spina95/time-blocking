@@ -1,0 +1,32 @@
+@import 'styles/theme.scss';
+
+:host {
+    display: block;
+}
+
+.app-card {
+    border-radius: var(--app-border-radius-md);
+    transition: all 0.3s ease;
+    border: none; // Remove default border for cleaner look
+
+    &.glass-effect {
+        background: rgba(40, 40, 40, 0.4);
+        /* Darker glass */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: var(--app-shadow-sm);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Lighter border for contrast */
+    }
+
+    ::ng-deep .ant-card-head {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        background: transparent;
+        color: var(--app-text-color);
+        font-weight: 600;
+    }
+
+    ::ng-deep .ant-card-body {
+        color: var(--app-text-secondary-color);
+    }
+}

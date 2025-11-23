@@ -1,0 +1,44 @@
+@import 'styles/theme.scss';
+
+:host {
+    display: block;
+    margin-bottom: var(--app-spacing-sm);
+}
+
+.collapse-container {
+    .collapse-header {
+        color: var(--app-text-color);
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.3s ease;
+
+        .collapse-title {
+            flex: 1;
+            font-size: 14px;
+        }
+
+        .collapse-icon {
+            color: var(--app-text-color-secondary);
+            transition: transform 0.3s ease;
+            font-size: 14px;
+            font-weight: 900;
+        }
+    }
+
+    .collapse-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+
+        &.open {
+            max-height: 2000px; // Large enough for content
+        }
+
+        .collapse-content-inner {
+            padding: var(--app-spacing-sm) 0;
+        }
+    }
+}

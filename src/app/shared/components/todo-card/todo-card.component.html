@@ -1,0 +1,20 @@
+<div class="todo-card" (click)="onCardClick($event)">
+    <div class="row title-row">
+        <div class="title-container">
+            <app-checkbox [ngModel]="checked" (ngModelChange)="onCheckedChange($event)"></app-checkbox>
+            <span class="title" [class.checked]="checked">{{ title }}</span>
+        </div>
+    </div>
+    <div class="row details-row">
+        <div class="priority-dot" [ngClass]="priority"></div>
+        <div class="duration">
+            <span nz-icon nzType="clock-circle" nzTheme="outline"></span>
+            <span>{{ duration }}h</span>
+        </div>
+        <div class="deadline" *ngIf="deadline">
+            <span nz-icon nzType="calendar" nzTheme="outline"></span>
+            <span>{{ formatDate(deadline) }}</span>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<nz-sider class="app-sidebar" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" [nzWidth]="sidebarWidth"
+    [nzTheme]="'dark'">
+
+    <div class="sidebar-content">
+        <app-todo-manager></app-todo-manager>
+    </div>
+
+    <div class="resizer" (mousedown)="startResizing($event)"></div>
+</nz-sider>

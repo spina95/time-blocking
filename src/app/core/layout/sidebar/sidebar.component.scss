@@ -1,0 +1,55 @@
+@import 'styles/theme.scss';
+
+:host {
+    display: contents; // Let nz-sider participate directly in the flex layout
+}
+
+.app-sidebar {
+    height: 100%;
+    background: var(--app-sidebar-background) !important;
+    backdrop-filter: blur(10px);
+    border-right: 1px solid var(--app-sidebar-border-color);
+    position: relative; // For resizer positioning
+    transition: none !important; // Disable transition for smooth resizing
+
+    ::ng-deep .ant-layout-sider-children {
+        display: flex;
+        flex-direction: column;
+        overflow: visible; // Allow resizer to extend outside
+    }
+
+    .sidebar-content {
+        margin-top: 2rem;
+        flex: 1;
+        overflow: hidden; // Let TodoManager handle scrolling
+        padding-top: var(--app-spacing-md);
+    }
+
+    .resizer {
+        position: absolute;
+        top: 0;
+        right: -5px; // Extend slightly outside to make it easier to grab
+        width: 10px; // Wider hit area
+        height: 100%;
+        cursor: col-resize;
+        z-index: 1000; // Ensure it's on top
+        transition: background-color 0.2s;
+
+        // Visual indicator (thin line)
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background-color: transparent;
+            transition: background-color 0.2s;
+        }
+
+        &:hover::after,
+        &:active::after {
+            background-color: var(--app-secondary-color);
+        }
+    }
+}

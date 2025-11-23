@@ -1,0 +1,185 @@
+.calendar-container {
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    full-calendar {
+        flex: 1;
+        overflow: hidden;
+    }
+}
+
+::ng-deep {
+
+    // Customize Buttons
+    .fc-button-primary {
+        background-color: var(--app-surface-color) !important;
+        border-color: var(--app-border-color) !important;
+        border-radius: var(--app-border-radius-md) !important;
+        padding: 8px 16px !important;
+        font-weight: 500;
+        text-transform: capitalize;
+
+        &:focus {
+            background-color: var(--app-primary-color) !important;
+            box-shadow: none !important;
+        }
+
+        &:hover {
+            background-color: var(--app-surface-color-hover) !important;
+            box-shadow: none !important;
+        }
+
+
+    }
+
+    // Hide Scrollbar
+    .fc-scroller {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    // Customize Borders
+    .fc-theme-standard td,
+    .fc-theme-standard th,
+    .fc-theme-standard .fc-scrollgrid {
+        border-color: var(--app-border-color) !important;
+    }
+
+    // Text Colors
+    .fc-toolbar-title,
+    .fc-col-header-cell-cushion,
+    .fc-daygrid-day-number,
+    .fc-list-event-title,
+    .fc-list-event-time {
+        color: var(--app-text-color) !important;
+        text-decoration: none !important;
+    }
+
+    // List View Headers
+    .fc-list-day-cushion {
+        background-color: var(--app-surface-color) !important;
+
+        .fc-list-day-text,
+        .fc-list-day-side-text {
+            color: var(--app-text-color) !important;
+            text-decoration: none !important;
+        }
+    }
+
+    // Empty list view
+    .fc-list-empty {
+        background-color: transparent !important;
+        color: var(--app-text-secondary-color) !important;
+    }
+
+    // Customize Events
+    .fc-event,
+    .fc-timegrid-event,
+    .fc-v-event {
+        background-color: var(--app-primary-color) !important;
+        border: 1px solid var(--app-border-color) !important;
+        box-shadow: none !important;
+        border-radius: var(--app-border-radius-md) !important;
+        padding: 2px 4px;
+
+        // Custom content layout
+        .custom-event-content {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .event-checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10; // Ensure it's clickable
+        }
+
+        .event-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            margin: 0;
+
+            &:checked {
+                background-color: white;
+                border-color: white;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 4px;
+                    top: 1px;
+                    width: 5px;
+                    height: 9px;
+                    border: solid var(--app-primary-color);
+                    border-width: 0 2px 2px 0;
+                    transform: rotate(45deg);
+                }
+            }
+
+            &:hover {
+                border-color: white;
+            }
+        }
+
+        // Event text
+        .fc-event-title,
+        .fc-event-time {
+            color: #ffffff !important; // Ensure text is white on primary color
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &:hover {
+            background-color: var(--app-secondary-color) !important;
+            cursor: pointer;
+        }
+    }
+
+    // List View Event Dot
+    .fc-list-event-dot {
+        border-color: green !important;
+    }
+}
+
+.events {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.events .ant-badge-status {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    text-overflow: ellipsis;
+    font-size: 12px;
+}
+
+.notes-month {
+    text-align: center;
+    font-size: 28px;
+}
+
+.notes-month section {
+    font-size: 28px;
+}

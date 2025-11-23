@@ -1,0 +1,12 @@
+<div class="collapse-container">
+    <div class="collapse-header" (click)="toggle()">
+        <span class="collapse-title">{{ title }}</span>
+        <span nz-icon [nzType]="isOpen ? 'down' : 'right'" nzTheme="outline" class="collapse-icon">
+        </span>
+    </div>
+    <div class="collapse-content" [class.open]="isOpen">
+        <div class="collapse-content-inner">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+@import 'styles/theme.scss';
+
+:host {
+    display: block;
+}
+
+.todo-card {
+    background: var(--app-surface-color);
+    border-radius: var(--app-border-radius-md);
+    padding: var(--app-spacing-sm) var(--app-spacing-md);
+    margin-bottom: var(--app-spacing-sm);
+    border: 1px solid var(--app-border-color);
+    transition: transform 0.2s;
+    cursor: pointer;
+    overflow: hidden; // Ensure no internal scrollbars
+
+    &:hover {
+        background: var(--app-surface-color-hover); // Slightly lighter on hover
+    }
+
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .title-row {
+        margin-bottom: 4px;
+
+        .title-container {
+            display: flex;
+            align-items: center;
+            gap: 0px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .title {
+            font-weight: 500;
+            color: var(--app-text-color);
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: color 0.2s, text-decoration 0.2s;
+
+            &.checked {
+                text-decoration: line-through;
+                color: var(--app-text-color-secondary);
+            }
+        }
+    }
+
+    .details-row {
+        font-size: 12px;
+        color: var(--app-text-color-secondary);
+        display: flex;
+        align-items: center;
+        gap: var(--app-spacing-md);
+        justify-content: start;
+        flex-wrap: wrap;
+
+        .duration {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .deadline {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .priority-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+
+            &.low {
+                background-color: #52c41a; // Green
+                box-shadow: 0 0 4px rgba(82, 196, 26, 0.4);
+            }
+
+            &.medium {
+                background-color: #faad14; // Yellow
+                box-shadow: 0 0 4px rgba(250, 173, 20, 0.4);
+            }
+
+            &.high {
+                background-color: #f5222d; // Red
+                box-shadow: 0 0 4px rgba(245, 34, 45, 0.4);
+            }
+        }
+    }
+}

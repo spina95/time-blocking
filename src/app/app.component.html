@@ -1,0 +1,11 @@
+<div class="app-container">
+  <nz-layout class="app-layout">
+    <app-sidebar></app-sidebar>
+    <app-main-content></app-main-content>
+  </nz-layout>
+
+  <app-dialog [visible]="isDialogOpen" [title]="dialogTitle" (close)="closeDialog()">
+    <app-create-task-form [task]="newTodo" [isEditMode]="isEditMode" (save)="addTodo()" (cancel)="closeDialog()">
+    </app-create-task-form>
+  </app-dialog>
+</div>

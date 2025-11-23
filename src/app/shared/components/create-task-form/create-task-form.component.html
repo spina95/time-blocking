@@ -1,0 +1,39 @@
+<div class="create-task-form">
+    <div class="form-item">
+        <label>Title</label>
+        <app-input placeholder="Task title" [(ngModel)]="task.title">
+        </app-input>
+    </div>
+
+    <div class="form-item">
+        <label>Category (Optional)</label>
+        <app-input placeholder="e.g., Work, Personal, Meetings" [(ngModel)]="task.category">
+        </app-input>
+    </div>
+
+    <div class="form-item">
+        <label>Duration (hours)</label>
+        <app-number-input [(ngModel)]="task.duration" [min]="0.1" [step]="0.5">
+        </app-number-input>
+    </div>
+
+    <div class="form-item">
+        <label>Priority</label>
+        <app-select [(ngModel)]="task.priority" [options]="priorityOptions" placeholder="Select priority">
+        </app-select>
+    </div>
+
+    <div class="form-item">
+        <label>Deadline (Optional)</label>
+        <app-date-picker [(ngModel)]="task.deadline" placeholder="Select deadline">
+        </app-date-picker>
+    </div>
+
+    <div class="form-actions">
+        <app-button label="Cancel" type="default" (onClick)="onCancel()">
+        </app-button>
+        <app-button [label]="isEditMode ? 'Update' : 'Create'" [disabled]="!task.title" [block]="false"
+            (onClick)="onSave()">
+        </app-button>
+    </div>
+</div>

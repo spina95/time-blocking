@@ -1,0 +1,24 @@
+<div class="todo-manager">
+    <div class="header">
+        <app-button label="Add Task" [icon]="'plus'" type="primary" [block]="true" (onClick)="openDialog()">
+        </app-button>
+    </div>
+
+    <div class="category-list" cdkDropListGroup>
+        <app-collapse *ngFor="let group of groupedTodos" [title]="group.category" [(isOpen)]="group.active">
+            <div class="todo-list" cdkDropList [cdkDropListData]="group.todos"
+                (cdkDropListDropped)="drop($event, group.category)">
+                <div class="todo-item fc-draggable-event" *ngFor="let todo of group.todos" cdkDrag
+                    [attr.data-event-title]="todo.title" [attr.data-event-duration]="todo.duration"
+                    [attr.data-event-id]="todo.id">
+                    <app-todo-card [title]="todo.title" [duration]="todo.duration" [priority]="todo.priority"
+                        [checked]="todo.completed" [deadline]="todo.deadline ?? null"
+                        (checkedChange)="toggleTodoCompletion(todo, $event)" (cardClick)="editTodo(todo)">
+                    </app-todo-card>
+                    <!-- Placeholder for drag preview -->
+                    <div *cdkDragPlaceholder class="custom-placeholder"></div>
+                </div>
+            </div>
+        </app-collapse>
+    </div>
+</div>

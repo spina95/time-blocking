@@ -1,0 +1,23 @@
+@import 'styles/theme.scss';
+
+:host {
+    display: block;
+    width: 100%;
+}
+
+// Global styles for the dropdown overlay (rendered outside component)
+::ng-deep .ant-select-dropdown {
+    background-color: var(--app-surface-color) !important;
+}
+
+::ng-deep .ant-select-item {
+    color: var(--app-text-color) !important;
+
+    &:hover {
+        background-color: var(--app-secondary-color) !important;
+    }
+}
+
+::ng-deep .ant-select-item-option-selected {
+    background-color: var(--app-primary-color) !important;
+}

@@ -1,0 +1,48 @@
+:root {
+  /* Colors */
+  --app-primary-color: #b82d2d;
+  --app-primary-color-rgb: 184, 45, 45;
+  /* RGB values for transparency */
+  /* Green (Synced with user change) */
+  --app-secondary-color: #b34444;
+  /* Darker Green */
+
+  /* Dark Mode Backgrounds */
+  --app-background-color: rgba(30, 30, 30, 0.6);
+  /* Dark transparent */
+  --app-surface-color: rgba(40, 40, 40, 0.8);
+  --app-surface-color-hover: rgba(54, 54, 54, 0.8);
+  /* Darker surface */
+  --app-main-content-background: rgb(46, 46, 46);
+  /* Darker right side */
+
+  /* Dark Mode Text */
+  --app-text-color: #f0f0f0;
+  /* Light text */
+  --app-text-secondary-color: #bfbfbf;
+  /* Secondary light text */
+  --app-border-color: #434343;
+  /* Dark border */
+
+  /* Spacing */
+  --app-spacing-xs: 4px;
+  --app-spacing-sm: 8px;
+  --app-spacing-md: 16px;
+  --app-spacing-lg: 24px;
+  --app-spacing-xl: 32px;
+
+  /* Border Radius */
+  --app-border-radius-sm: 4px;
+  --app-border-radius-md: 8px;
+  --app-border-radius-lg: 12px;
+
+  /* Sidebar */
+  --app-sidebar-background: rgba(0, 0, 0, 0.3);
+  --app-sidebar-border-color: var(--app-border-color);
+  --app-sidebar-resizer-color: var(--app-primary-color);
+  --app-sidebar-width: 200px;
+
+  /* Shadows */
+  --app-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
+  --app-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45);
+}

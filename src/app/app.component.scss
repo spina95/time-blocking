@@ -1,0 +1,31 @@
+@import 'styles/theme.scss';
+
+.app-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.title-bar {
+    display: flex;
+    align-items: center;
+    height: 38px; // Fixed height for title bar
+    z-index: 1000;
+    flex-shrink: 0; // Prevent shrinking
+
+    .drag-region {
+        -webkit-app-region: drag;
+        flex: 1;
+        height: 100%;
+    }
+}
+
+.app-layout {
+    display: flex;
+    flex-direction: row; // Ensure sidebar is on the left
+    flex: 1;
+    overflow: hidden;
+    background: transparent; // Important for transparency
+}

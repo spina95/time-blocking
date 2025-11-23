@@ -1,0 +1,13 @@
+<div class="dialog-backdrop" *ngIf="visible" (click)="onBackdropClick($event)">
+    <div class="dialog-container">
+        <div class="dialog-header">
+            <span class="dialog-title">{{ title }}</span>
+            <button class="close-btn" (click)="onClose()">
+                <span nz-icon nzType="close" nzTheme="outline"></span>
+            </button>
+        </div>
+        <div class="dialog-content">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+<nz-select [ngModel]="value" (ngModelChange)="onModelChange($event)" [nzPlaceHolder]="placeholder"
+    [nzDisabled]="disabled" style="width: 100%;">
+    <nz-option *ngFor="let option of options" [nzValue]="option.value" [nzLabel]="option.label">
+    </nz-option>
+</nz-select>

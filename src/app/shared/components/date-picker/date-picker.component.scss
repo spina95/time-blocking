@@ -1,0 +1,47 @@
+@import 'styles/theme.scss';
+
+:host {
+    display: block;
+    width: 100%;
+}
+
+// Global styles for the date picker overlay
+::ng-deep .ant-picker-dropdown {
+    background-color: var(--app-surface-color) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+::ng-deep .ant-picker-panel-container {
+    background-color: var(--app-surface-color) !important;
+}
+
+::ng-deep .ant-picker-header,
+::ng-deep .ant-picker-body,
+::ng-deep .ant-picker-footer {
+    background-color: var(--app-surface-color) !important;
+    color: var(--app-text-color) !important;
+}
+
+::ng-deep .ant-picker-cell {
+    color: var(--app-text-color) !important;
+}
+
+::ng-deep .ant-picker-cell:hover .ant-picker-cell-inner {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+::ng-deep .ant-picker-cell-selected .ant-picker-cell-inner {
+    background-color: var(--app-primary-color) !important;
+}
+
+::ng-deep .ant-picker-cell-today .ant-picker-cell-inner::before {
+    border-color: var(--app-primary-color) !important;
+}
+
+::ng-deep .ant-picker-header-view button {
+    color: var(--app-text-color) !important;
+}
+
+::ng-deep .ant-picker-header-view button:hover {
+    color: var(--app-primary-color) !important;
+}

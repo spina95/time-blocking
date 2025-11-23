@@ -1,0 +1,6 @@
+<button nz-button [nzType]="type" [nzSize]="size" [disabled]="disabled" [nzLoading]="loading" [nzBlock]="block"
+  (click)="handleClick($event)" class="app-button">
+  <span nz-icon [nzType]="icon" *ngIf="icon"></span>
+  <ng-content></ng-content>
+  {{ label }}
+</button>

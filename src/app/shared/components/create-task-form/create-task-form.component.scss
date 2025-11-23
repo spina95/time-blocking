@@ -1,0 +1,26 @@
+@import 'styles/theme.scss';
+
+.create-task-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-spacing-md);
+
+    .form-item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        label {
+            font-size: 12px;
+            color: var(--app-text-color-secondary);
+        }
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: var(--app-spacing-sm);
+        margin-top: var(--app-spacing-sm);
+    }
+}

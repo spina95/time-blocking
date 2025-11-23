@@ -1,0 +1,24 @@
+@import 'styles/theme.scss';
+
+:host {
+    display: block;
+    flex: 1;
+    min-width: 0; // Prevent overflow issues
+    overflow: hidden;
+    /* Let inner content handle scroll */
+}
+
+.app-main-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--app-main-content-background);
+    backdrop-filter: blur(10px);
+    /* Optional: add blur to main content too if desired, or keep it transparent-ish */
+
+    .inner-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: var(--app-spacing-md);
+    }
+}

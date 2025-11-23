@@ -1,0 +1,67 @@
+@import 'styles/theme.scss';
+
+.todo-manager {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0 var(--app-spacing-md);
+
+    .header {
+        margin-bottom: var(--app-spacing-md);
+        width: 100%;
+    }
+
+    .category-list {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .todo-list {
+        flex: 1;
+        overflow-y: auto;
+        min-height: 100px; // Ensure drop area exists even if empty
+    }
+
+    .todo-item {
+        cursor: move;
+        /* fallback if grab cursor is unsupported */
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
+
+        &:active {
+            cursor: grabbing;
+            cursor: -moz-grabbing;
+            cursor: -webkit-grabbing;
+        }
+    }
+
+    // Drag & Drop Styles
+    .todo-list.cdk-drop-list-dragging .todo-item:not(.cdk-drag-placeholder) {
+        transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-spacing-md);
+
+    .form-item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        label {
+            font-size: 12px;
+            color: var(--app-text-color-secondary);
+        }
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: var(--app-spacing-sm);
+        margin-top: var(--app-spacing-sm);
+    }
+}
