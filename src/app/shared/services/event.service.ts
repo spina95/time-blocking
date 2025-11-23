@@ -77,4 +77,10 @@ export class EventService {
             this.eventsSubject.next([...currentEvents]);
         }
     }
+
+    deleteEventByTodoId(todoId: number): void {
+        const currentEvents = this.getEvents();
+        const filteredEvents = currentEvents.filter(e => e.extendedProps?.todoId !== todoId);
+        this.eventsSubject.next(filteredEvents);
+    }
 }

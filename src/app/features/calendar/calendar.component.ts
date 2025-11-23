@@ -9,6 +9,8 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { EventService } from '../../shared/services/event.service';
 import { TodoService } from '../../shared/services/todo.service';
 
+import { DialogService } from '../../shared/services/dialog.service';
+
 @Component({
     selector: 'app-calendar',
     standalone: true,
@@ -32,6 +34,24 @@ export class CalendarComponent implements OnInit {
         dayMaxEvents: true,
         droppable: true, // Enable dropping
         events: [],
+        select: (info) => {
+            // Calculate duration in hours
+            const start = info.start.getTime();
+            const end = info.end.getTime();
+            const durationMs = end - start;
+            const durationHours = durationMs / (1000 * 60 * 60);
+            const roundedDuration = Math.round(durationHours * 10) / 10;
+
+            this.dialogService.openDialog('Create New Task', {
+                title: '',
+                duration: roundedDuration,
+                priority: 'medium'
+            }, {
+                start: info.start,
+                end: info.end,
+                allDay: info.allDay
+            });
+        },
         eventReceive: (info) => {
             // Called when an external element is dropped
             const newEvent = {
@@ -50,6 +70,10 @@ export class CalendarComponent implements OnInit {
         eventContent: (arg) => {
             const container = document.createElement('div');
             container.className = 'custom-event-content';
+
+            // Header Row (Checkbox + Title)
+            const headerRow = document.createElement('div');
+            headerRow.className = 'event-header-row';
 
             // Checkbox
             const checkboxWrapper = document.createElement('div');
@@ -90,15 +114,7 @@ export class CalendarComponent implements OnInit {
             checkboxWrapper.addEventListener('mousedown', (e) => e.stopPropagation());
 
             checkboxWrapper.appendChild(checkbox);
-            container.appendChild(checkboxWrapper);
-
-            // Time (if not all day)
-            if (!arg.event.allDay && arg.timeText) {
-                const time = document.createElement('div');
-                time.className = 'fc-event-time';
-                time.innerText = arg.timeText;
-                container.appendChild(time);
-            }
+            headerRow.appendChild(checkboxWrapper);
 
             // Title
             const title = document.createElement('div');
@@ -108,7 +124,16 @@ export class CalendarComponent implements OnInit {
                 title.style.textDecoration = 'line-through';
                 title.style.opacity = '0.7';
             }
-            container.appendChild(title);
+            headerRow.appendChild(title);
+            container.appendChild(headerRow);
+
+            // Time (if not all day) - Placed below header
+            if (!arg.event.allDay && arg.timeText) {
+                const time = document.createElement('div');
+                time.className = 'fc-event-time';
+                time.innerText = arg.timeText;
+                container.appendChild(time);
+            }
 
             return { domNodes: [container] };
         },
@@ -154,7 +179,8 @@ export class CalendarComponent implements OnInit {
 
     constructor(
         private eventService: EventService,
-        private todoService: TodoService
+        private todoService: TodoService,
+        private dialogService: DialogService
     ) { }
 
     ngOnInit(): void {

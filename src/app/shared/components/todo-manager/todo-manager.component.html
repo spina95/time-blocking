@@ -13,7 +13,8 @@
                     [attr.data-event-id]="todo.id">
                     <app-todo-card [title]="todo.title" [duration]="todo.duration" [priority]="todo.priority"
                         [checked]="todo.completed" [deadline]="todo.deadline ?? null"
-                        (checkedChange)="toggleTodoCompletion(todo, $event)" (cardClick)="editTodo(todo)">
+                        (checkedChange)="toggleTodoCompletion(todo, $event)" (cardClick)="editTodo(todo)"
+                        (deleteClick)="confirmDeleteTodo(todo)">
                     </app-todo-card>
                     <!-- Placeholder for drag preview -->
                     <div *cdkDragPlaceholder class="custom-placeholder"></div>

@@ -177,4 +177,11 @@ export class TodoManagerComponent implements OnInit, AfterViewInit, OnDestroy {
   toggleTodoCompletion(todo: Todo, completed: boolean): void {
     this.todoService.updateTodoCompletion(todo.id, completed);
   }
+
+  confirmDeleteTodo(todo: Todo): void {
+    this.dialogService.openDialog('Delete Task', {
+      message: `Are you sure you want to delete "${todo.title}"? This action cannot be undone.`,
+      todoId: todo.id
+    });
+  }
 }

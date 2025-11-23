@@ -19,6 +19,7 @@ export class TodoCardComponent {
   @Input() deadline: Date | null = null;
   @Output() checkedChange = new EventEmitter<boolean>();
   @Output() cardClick = new EventEmitter<void>();
+  @Output() deleteClick = new EventEmitter<void>();
 
   onCheckedChange(value: boolean): void {
     this.checked = value;
@@ -26,11 +27,16 @@ export class TodoCardComponent {
   }
 
   onCardClick(event: MouseEvent): void {
-    // Don't emit click if clicking on checkbox
+    // Don't emit click if clicking on checkbox or delete button
     const target = event.target as HTMLElement;
-    if (!target.closest('app-checkbox')) {
+    if (!target.closest('app-checkbox') && !target.closest('.delete-btn')) {
       this.cardClick.emit();
     }
+  }
+
+  onDeleteClick(event: MouseEvent): void {
+    event.stopPropagation();
+    this.deleteClick.emit();
   }
 
   formatDate(date: Date | null): string {

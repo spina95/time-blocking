@@ -91,10 +91,19 @@
         // Custom content layout
         .custom-event-content {
             display: flex;
+            flex-direction: column; // Stack header and time vertically
+            align-items: flex-start;
+            gap: 2px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .event-header-row {
+            font-weight: bold;
+            display: flex;
             align-items: center;
             gap: 4px;
             width: 100%;
-            overflow: hidden;
         }
 
         .event-checkbox-wrapper {
@@ -103,6 +112,7 @@
             justify-content: center;
             cursor: pointer;
             z-index: 10; // Ensure it's clickable
+            flex-shrink: 0; // Prevent checkbox from shrinking
         }
 
         .event-checkbox {

@@ -13,9 +13,43 @@
     transition: transform 0.2s;
     cursor: pointer;
     overflow: hidden; // Ensure no internal scrollbars
+    position: relative; // For absolute positioning of delete button
 
     &:hover {
         background: var(--app-surface-color-hover); // Slightly lighter on hover
+
+        .delete-btn {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    .delete-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: transparent;
+        border: none;
+        color: var(--app-text-color-secondary);
+        cursor: pointer;
+        padding: 4px;
+        border-radius: var(--app-border-radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s, background-color 0.2s, color 0.2s;
+        z-index: 10;
+
+        &:hover {
+            background: rgba(245, 34, 45, 0.1);
+            color: #f5222d;
+        }
+
+        span {
+            font-size: 16px;
+        }
     }
 
     .row {

@@ -26,7 +26,7 @@ export class TodoService {
 
   constructor(private eventService: EventService) { }
 
-  addTodo(todo: Partial<Todo>): void {
+  addTodo(todo: Partial<Todo>): Todo {
     const newTodo: Todo = {
       id: Date.now(),
       title: todo.title || '',
@@ -39,6 +39,8 @@ export class TodoService {
 
     const currentTodos = this.todosSubject.value;
     this.todosSubject.next([...currentTodos, newTodo]);
+
+    return newTodo;
   }
 
   updateTodo(updatedTodo: Todo): void {
@@ -83,6 +85,15 @@ export class TodoService {
         extendedProps: { completed: completed }
       });
     }
+  }
+
+  deleteTodo(id: number): void {
+    const currentTodos = this.todosSubject.value;
+    const filteredTodos = currentTodos.filter(t => t.id !== id);
+    this.todosSubject.next(filteredTodos);
+
+    // Delete associated calendar event
+    this.eventService.deleteEventByTodoId(id);
   }
 
   updateTodos(todos: Todo[]): void {

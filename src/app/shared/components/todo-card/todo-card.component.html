@@ -1,4 +1,7 @@
 <div class="todo-card" (click)="onCardClick($event)">
+    <button class="delete-btn" (click)="onDeleteClick($event)" title="Delete task">
+        <span nz-icon nzType="delete" nzTheme="outline"></span>
+    </button>
     <div class="row title-row">
         <div class="title-container">
             <app-checkbox [ngModel]="checked" (ngModelChange)="onCheckedChange($event)"></app-checkbox>

@@ -8,4 +8,8 @@
     <app-create-task-form [task]="newTodo" [isEditMode]="isEditMode" (save)="addTodo()" (cancel)="closeDialog()">
     </app-create-task-form>
   </app-dialog>
+
+  <app-confirm-dialog [visible]="isConfirmDialogOpen" [title]="confirmDialogTitle" [message]="confirmDialogMessage"
+    confirmText="Delete" cancelText="Cancel" (confirm)="handleDeleteConfirm()" (cancel)="closeConfirmDialog()">
+  </app-confirm-dialog>
 </div>
