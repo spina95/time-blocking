@@ -1,5 +1,6 @@
 .calendar-container {
-    padding: 24px;
+    padding: var(--app-spacing-md);
+    padding-top: 0;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -19,19 +20,35 @@
         border-radius: var(--app-border-radius-md) !important;
         padding: 8px 16px !important;
         font-weight: 500;
-        text-transform: capitalize;
+        text-transform: capitalize !important;
+        font-size: 14px;
 
-        &:focus {
+        // Click (active press) shows primary color for all buttons
+        &:active {
             background-color: var(--app-primary-color) !important;
-            box-shadow: none !important;
+            border-color: var(--app-primary-color) !important;
+            color: white !important;
         }
 
-        &:hover {
-            background-color: var(--app-surface-color-hover) !important;
-            box-shadow: none !important;
+        // View buttons stay colored when selected (active view)
+        &.fc-button-active:not(.fc-prev-button):not(.fc-next-button):not(.fc-today-button) {
+            background-color: var(--app-primary-color) !important;
+            border-color: var(--app-primary-color) !important;
+            color: white !important;
         }
 
+        // Ensure navigation buttons (prev, next, today) revert to normal after click
+        &.fc-prev-button,
+        &.fc-next-button,
+        &.fc-today-button {
 
+            &:focus,
+            &:hover {
+                background-color: var(--app-surface-color) !important;
+                border-color: var(--app-border-color) !important;
+                box-shadow: none !important;
+            }
+        }
     }
 
     // Hide Scrollbar

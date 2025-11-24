@@ -1,7 +1,12 @@
 <div class="app-container">
+
   <nz-layout class="app-layout">
     <app-sidebar></app-sidebar>
-    <app-main-content></app-main-content>
+    <div class="main-content">
+      <div class="drag-region"></div>
+      <app-main-content></app-main-content>
+    </div>
+
   </nz-layout>
 
   <app-dialog [visible]="isDialogOpen" [title]="dialogTitle" (close)="closeDialog()">

@@ -5,8 +5,10 @@ function createWindow() {
   const isMac = process.platform === 'darwin';
 
   const win = new BrowserWindow({
-    width: 1000,
-    height: 800,
+    width: 1100,
+    height: 700,
+    minWidth: 1100,
+    minHeight: 700,
     frame: !isMac, // Frameless on Mac, default frame on Windows/Linux
     titleBarStyle: isMac ? 'hidden' : 'default', // Hidden title bar on Mac for traffic lights
     trafficLightPosition: isMac ? { x: 15, y: 12 } : undefined, // Adjust traffic light position on Mac
