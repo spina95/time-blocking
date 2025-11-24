@@ -1,0 +1,94 @@
+@import 'styles/theme.scss';
+
+.project-carousel-container {
+    padding: var(--app-spacing-md) 0;
+    background: transparent;
+
+    .project-list {
+        display: flex;
+        overflow-x: auto;
+        gap: var(--app-spacing-sm);
+        padding-bottom: 4px; // Space for scrollbar if visible
+        padding-left: var(--app-spacing-md);
+        padding-right: var(--app-spacing-md); // Add right padding too for balance
+        scrollbar-width: none; // Firefox
+        -ms-overflow-style: none; // IE/Edge
+
+        &::-webkit-scrollbar {
+            display: none; // Chrome/Safari
+        }
+
+        cursor: grab;
+
+        &:active {
+            cursor: grabbing;
+        }
+    }
+
+    .project-item {
+        flex: 0 0 auto;
+        padding: 0 var(--app-spacing-md);
+        height: 32px;
+        background: var(--app-surface-color);
+        border: 1px solid var(--app-border-color);
+        border-radius: var(--app-border-radius-md);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 80px;
+        user-select: none;
+        gap: 8px;
+
+        h3 {
+            margin: 0;
+            color: var(--app-text-color);
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        span[nz-icon] {
+            color: var(--app-text-color-secondary);
+            font-size: 14px;
+        }
+
+        &:hover {
+            background: var(--app-surface-color-hover);
+            border-color: var(--project-color);
+
+            h3 {
+                color: var(--project-color);
+            }
+
+            span[nz-icon] {
+                color: var(--project-color);
+            }
+        }
+
+        &.active {
+            background: color-mix(in srgb, var(--project-color), transparent 90%);
+            border-color: var(--project-color);
+
+            h3 {
+                color: var(--project-color);
+                font-weight: 600;
+            }
+
+            span[nz-icon] {
+                color: var(--project-color);
+            }
+        }
+
+        &.add-project-btn {
+            border-style: dashed;
+            opacity: 0.7;
+
+            &:hover {
+                opacity: 1;
+                border-style: solid;
+            }
+        }
+    }
+}

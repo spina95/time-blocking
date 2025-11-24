@@ -4,7 +4,13 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 0 var(--app-spacing-md);
+
+    .todo-manager-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 0 var(--app-spacing-md);
+    }
 
     .header {
         margin-bottom: var(--app-spacing-md);
@@ -20,6 +26,7 @@
         flex: 1;
         overflow-y: auto;
         min-height: 100px; // Ensure drop area exists even if empty
+
     }
 
     .todo-item {

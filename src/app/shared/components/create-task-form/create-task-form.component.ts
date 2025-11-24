@@ -6,16 +6,7 @@ import { InputComponent } from '../input/input.component';
 import { SelectComponent, SelectOption } from '../select/select.component';
 import { NumberInputComponent } from '../number-input/number-input.component';
 import { DatePickerComponent } from '../date-picker/date-picker.component';
-
-interface Todo {
-  id?: number;
-  title: string;
-  duration: number;
-  priority: 'low' | 'medium' | 'high';
-  completed?: boolean;
-  deadline?: Date | null;
-  category?: string;
-}
+import { TodoService, Todo } from '../../services/todo.service';
 
 @Component({
   selector: 'app-create-task-form',
@@ -36,7 +27,9 @@ export class CreateTaskFormComponent {
   @Input() task: Partial<Todo> = {
     title: '',
     duration: 1,
-    priority: 'medium'
+    priority: 'medium',
+    recurrence: 'none',
+    projectId: 1
   };
 
   @Input() isEditMode: boolean = false;
@@ -49,6 +42,19 @@ export class CreateTaskFormComponent {
     { label: 'Medium', value: 'medium' },
     { label: 'High', value: 'high' }
   ];
+
+  recurrenceOptions: SelectOption[] = [
+    { label: 'None', value: 'none' },
+    { label: 'Every Day', value: 'daily' },
+    { label: 'Every Week', value: 'weekly' },
+    { label: 'Every Month', value: 'monthly' }
+  ];
+
+  projects: { label: string; value: number }[] = [];
+
+  constructor(private todoService: TodoService) {
+    this.projects = this.todoService.getProjects().map(p => ({ label: p.name, value: p.id }));
+  }
 
   onSave(): void {
     if (this.task.title && this.task.duration) {

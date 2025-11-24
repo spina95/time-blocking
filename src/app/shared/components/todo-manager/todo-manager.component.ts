@@ -14,6 +14,7 @@ import { TodoCardComponent } from '../todo-card/todo-card.component';
 import { CollapseComponent } from '../collapse/collapse.component';
 import { DialogService } from '../../services/dialog.service';
 import { TodoService, Todo } from '../../services/todo.service';
+import { ProjectCarouselComponent } from "../project-carousel/project-carousel.component";
 
 interface TodoGroup {
   category: string;
@@ -35,7 +36,8 @@ interface TodoGroup {
     NzInputNumberModule,
     TodoCardComponent,
     ButtonComponent,
-    CollapseComponent
+    CollapseComponent,
+    ProjectCarouselComponent
   ],
   templateUrl: './todo-manager.component.html',
   styleUrls: ['./todo-manager.component.scss']
@@ -54,7 +56,7 @@ export class TodoManagerComponent implements OnInit, AfterViewInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.todoService.todos$.subscribe(todos => {
+    this.todoService.activeTodos$.subscribe(todos => {
       this.todos = todos;
       this.groupTodosByCategory();
       // Re-initialize draggable after view updates if needed, but usually one init on container is enough if using itemSelector
@@ -170,7 +172,10 @@ export class TodoManagerComponent implements OnInit, AfterViewInit, OnDestroy {
       duration: todo.duration,
       priority: todo.priority,
       deadline: todo.deadline,
-      category: todo.category
+      category: todo.category,
+      projectId: todo.projectId,
+      completed: todo.completed,
+      recurrence: todo.recurrence
     });
   }
 
@@ -183,5 +188,9 @@ export class TodoManagerComponent implements OnInit, AfterViewInit, OnDestroy {
       message: `Are you sure you want to delete "${todo.title}"? This action cannot be undone.`,
       todoId: todo.id
     });
+  }
+
+  trackByTodoId(index: number, todo: Todo): number {
+    return todo.id;
   }
 }

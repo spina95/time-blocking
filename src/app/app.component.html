@@ -5,11 +5,52 @@
   </nz-layout>
 
   <app-dialog [visible]="isDialogOpen" [title]="dialogTitle" (close)="closeDialog()">
-    <app-create-task-form [task]="newTodo" [isEditMode]="isEditMode" (save)="addTodo()" (cancel)="closeDialog()">
+    <app-create-task-form [task]="newTodo" [isEditMode]="isEditMode" (save)="addTodo($event)" (cancel)="closeDialog()">
     </app-create-task-form>
   </app-dialog>
 
-  <app-confirm-dialog [visible]="isConfirmDialogOpen" [title]="confirmDialogTitle" [message]="confirmDialogMessage"
-    confirmText="Delete" cancelText="Cancel" (confirm)="handleDeleteConfirm()" (cancel)="closeConfirmDialog()">
-  </app-confirm-dialog>
+  <app-dialog [visible]="isConfirmDialogOpen" [title]="confirmDialogTitle" (close)="closeConfirmDialog()">
+    <div class="confirm-dialog-content">
+      <p>{{ confirmDialogMessage }}</p>
+      <div class="confirm-dialog-actions">
+        <app-button label="Cancel" type="default" (onClick)="closeConfirmDialog()"></app-button>
+        <app-button label="Delete" type="primary" (onClick)="handleDeleteConfirm()" class="danger-button"></app-button>
+      </div>
+    </div>
+  </app-dialog>
+
+  <app-dialog [visible]="isProjectDialogOpen" title="Create New Project" (close)="closeDialog()">
+    <div class="add-project-form">
+      <div class="form-item">
+        <label>Project Name</label>
+        <app-input placeholder="Enter project name" [(ngModel)]="newProject.name"></app-input>
+      </div>
+
+      <div class="form-item">
+        <label>Icon</label>
+        <div class="icon-grid">
+          <div class="icon-option" *ngFor="let icon of availableIcons" [class.selected]="newProject.icon === icon"
+            (click)="newProject.icon = icon">
+            <span nz-icon [nzType]="icon" nzTheme="outline"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-item">
+        <label>Color</label>
+        <div class="color-grid">
+          <div class="color-option" *ngFor="let color of availableColors" [class.selected]="newProject.color === color"
+            [style.background-color]="color" (click)="newProject.color = color">
+            <span *ngIf="newProject.color === color" nz-icon nzType="check" nzTheme="outline"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <app-button label="Cancel" type="default" (onClick)="closeDialog()"></app-button>
+        <app-button label="Create" type="primary" [disabled]="!newProject.name || !newProject.icon"
+          (onClick)="createProject()"></app-button>
+      </div>
+    </div>
+  </app-dialog>
 </div>

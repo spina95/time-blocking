@@ -2,10 +2,42 @@
 
 .app-container {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+    width: 100vw;
     overflow: hidden;
+    background-color: var(--app-background-color);
+}
+
+.app-layout {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+}
+
+.confirm-dialog-content {
+    padding: var(--app-spacing-md) 0;
+
+    p {
+        margin: 0 0 var(--app-spacing-lg) 0;
+        color: var(--app-text-color);
+        font-size: 14px;
+        line-height: 1.5;
+    }
+}
+
+.confirm-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--app-spacing-sm);
+
+    ::ng-deep .danger-button button {
+        background-color: #f5222d !important;
+        border-color: #f5222d !important;
+
+        &:hover {
+            background-color: #cf1322 !important;
+            border-color: #cf1322 !important;
+        }
+    }
 }
 
 .title-bar {
@@ -28,4 +60,101 @@
     flex: 1;
     overflow: hidden;
     background: transparent; // Important for transparency
+}
+
+.add-project-form {
+    padding: var(--app-spacing-md) 0;
+
+    .form-item {
+        margin-bottom: var(--app-spacing-lg);
+
+        label {
+            display: block;
+            margin-bottom: var(--app-spacing-xs);
+            color: var(--app-text-color-secondary);
+            font-size: 12px;
+        }
+    }
+
+    .icon-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+        gap: 10px;
+        margin-top: 8px;
+
+        .icon-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--app-border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+
+            span {
+                font-size: 18px;
+                color: var(--app-text-color-secondary);
+            }
+
+            &:hover {
+                background: var(--app-surface-color-hover);
+                border-color: var(--app-primary-color);
+
+                span {
+                    color: var(--app-primary-color);
+                }
+            }
+
+            &.selected {
+                background: rgba(var(--app-primary-color-rgb), 0.1);
+                border-color: var(--app-primary-color);
+
+                span {
+                    color: var(--app-primary-color);
+                }
+            }
+        }
+    }
+
+    .color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(32px, 1fr));
+        gap: 10px;
+        margin-top: 8px;
+
+        .color-option {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+
+            span {
+                color: white;
+                font-size: 14px;
+            }
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
+            &.selected {
+                border-color: var(--app-text-color);
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: var(--app-spacing-sm);
+        margin-top: var(--app-spacing-xl);
+    }
 }

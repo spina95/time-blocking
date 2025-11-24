@@ -1,0 +1,15 @@
+<div class="project-carousel-container">
+    <div class="project-list" #projectList (mousedown)="onMouseDown($event)">
+        <div class="project-item" *ngFor="let project of projects" (click)="selectProject(project)"
+            [class.active]="project.id === selectedProjectId"
+            [style.--project-color]="project.color || 'var(--app-primary-color)'">
+            <span *ngIf="project.icon" nz-icon [nzType]="project.icon" nzTheme="outline"></span>
+            <h3>{{ project.name }}</h3>
+        </div>
+
+        <div class="project-item add-project-btn" (click)="openAddProjectDialog()">
+            <span nz-icon nzType="plus" nzTheme="outline"></span>
+            <h3>Add Project</h3>
+        </div>
+    </div>
+</div>

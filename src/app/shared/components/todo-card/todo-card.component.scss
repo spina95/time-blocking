@@ -14,6 +14,7 @@
     cursor: pointer;
     overflow: hidden; // Ensure no internal scrollbars
     position: relative; // For absolute positioning of delete button
+    user-select: none; // Prevent text selection
 
     &:hover {
         background: var(--app-surface-color-hover); // Slightly lighter on hover
@@ -67,6 +68,7 @@
             gap: 0px;
             width: 100%;
             overflow: hidden;
+            padding-right: 32px; // Reserve space for delete button
         }
 
         .title {

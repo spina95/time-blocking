@@ -29,6 +29,18 @@
         </app-date-picker>
     </div>
 
+    <div class="form-item">
+        <label>Recurrence (Optional)</label>
+        <app-select [(ngModel)]="task.recurrence" [options]="recurrenceOptions" placeholder="Select recurrence">
+        </app-select>
+    </div>
+
+    <div class="form-item">
+        <label>Project</label>
+        <app-select [(ngModel)]="task.projectId" [options]="projects" placeholder="Select project">
+        </app-select>
+    </div>
+
     <div class="form-actions">
         <app-button label="Cancel" type="default" (onClick)="onCancel()">
         </app-button>

@@ -12,6 +12,7 @@
 
 ::ng-deep .ant-select-item {
     color: var(--app-text-color) !important;
+    background-color: transparent !important;
 
     &:hover {
         background-color: var(--app-secondary-color) !important;
@@ -20,4 +21,9 @@
 
 ::ng-deep .ant-select-item-option-selected {
     background-color: var(--app-primary-color) !important;
+    color: white !important;
+
+    &:not(:hover) {
+        background-color: var(--app-primary-color) !important;
+    }
 }

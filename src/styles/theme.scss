@@ -1,6 +1,6 @@
 :root {
   /* Colors */
-  --app-primary-color: #b82d2d;
+  --app-primary-color: #bb4d4d;
   --app-primary-color-rgb: 184, 45, 45;
   /* RGB values for transparency */
   /* Green (Synced with user change) */
@@ -8,10 +8,10 @@
   /* Darker Green */
 
   /* Dark Mode Backgrounds */
-  --app-background-color: rgba(30, 30, 30, 0.6);
+  --app-background-color: rgba(30, 30, 30, 0.1);
   /* Dark transparent */
-  --app-surface-color: rgba(40, 40, 40, 0.8);
-  --app-surface-color-hover: rgba(54, 54, 54, 0.8);
+  --app-surface-color: rgba(40, 40, 40, 1);
+  --app-surface-color-hover: rgba(54, 54, 54, 1);
   /* Darker surface */
   --app-main-content-background: rgb(46, 46, 46);
   /* Darker right side */
@@ -37,7 +37,7 @@
   --app-border-radius-lg: 12px;
 
   /* Sidebar */
-  --app-sidebar-background: rgba(0, 0, 0, 0.3);
+  --app-sidebar-background: rgba(0, 0, 0, 0.1);
   --app-sidebar-border-color: var(--app-border-color);
   --app-sidebar-resizer-color: var(--app-primary-color);
   --app-sidebar-width: 200px;

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -9,7 +9,8 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
   standalone: true,
   imports: [CommonModule, FormsModule, NzIconModule, CheckboxComponent],
   templateUrl: './todo-card.component.html',
-  styleUrls: ['./todo-card.component.scss']
+  styleUrls: ['./todo-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoCardComponent {
   @Input() title: string = '';
